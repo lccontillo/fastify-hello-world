@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/render-examples/fastify-hello-world#readme",
   "dependencies": {
-    "fastify": "^4.17.0"
+    "fastify": "^4.17.0",
+    "openai": "^4.94.0",
+    "uuid": "^11.1.0"
   },
   "engines": {
     "node": "18.x"
