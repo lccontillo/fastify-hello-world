@@ -1,0 +1,26 @@
+### Health Check
+GET http://localhost:3000/
+Accept: application/json
+
+### Generate a new image
+POST http://localhost:3000/generate
+Content-Type: application/json
+X-NEBIUS-KEY: your_nebius_api_key_here
+
+{
+  "prompt": "a cyberpunk cityscape with neon lights and flying cars",
+  "negative_prompt": "blurry, low quality",
+  "seed": 12345
+}
+
+### Check task status by ID (replace with your actual task ID)
+GET http://localhost:3000/tasks/550e8400-e29b-41d4-a716-446655440000
+Accept: application/json
+
+### Get task result by ID (replace with your actual task ID)
+GET http://localhost:3000/tasks/550e8400-e29b-41d4-a716-446655440000/result
+Accept: application/json
+
+### Check queue status
+GET http://localhost:3000/queue/status
+Accept: application/json
