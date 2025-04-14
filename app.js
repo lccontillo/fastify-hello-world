@@ -51,7 +51,7 @@ setInterval(async () => {
         // Process the task
         const response = await client.images.generate({
           model: "black-forest-labs/flux-dev",
-          response_format: "b64_json",
+          response_format: "url",
           extra_body: {
             response_extension: "png",
             width: 1024,
