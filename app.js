@@ -54,9 +54,9 @@ setInterval(async () => {
           response_format: "url",
           extra_body: {
             response_extension: "png",
-            width: 1024,
-            height: 1024,
-            num_inference_steps: 28,
+            width: task.width || 1024,
+            height: task.height || 1024,
+            num_inference_steps: task.num_inference_steps || 28,
             negative_prompt: task.negative_prompt || "",
             seed: task.seed || -1,
           },
@@ -108,7 +108,8 @@ fastify.get("/", async (request, reply) => {
 
 // Route to submit a new image generation task
 fastify.post("/generate", async (request, reply) => {
-  const { prompt, negative_prompt, seed } = request.body;
+  const { prompt, negative_prompt, seed, width, height, num_inference_steps } =
+    request.body;
 
   if (!prompt) {
     return reply.code(400).send({ error: "Prompt is required" });
@@ -119,6 +120,9 @@ fastify.post("/generate", async (request, reply) => {
   const task = {
     id: taskId,
     prompt,
+    width,
+    height,
+    num_inference_steps,
     negative_prompt: negative_prompt || "",
     seed: seed || -1,
     apiKey: request.nebiusKey, // Store the API key with the task
