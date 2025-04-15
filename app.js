@@ -48,18 +48,17 @@ setInterval(async () => {
           apiKey: task.apiKey,
         });
 
+        console.log(task.width, task.height, task.num_inference_steps);
         // Process the task
         const response = await client.images.generate({
           model: "black-forest-labs/flux-dev",
           response_format: "url",
-          extra_body: {
-            response_extension: "png",
-            width: task.width || 1024,
-            height: task.height || 1024,
-            num_inference_steps: task.num_inference_steps || 28,
-            negative_prompt: task.negative_prompt || "",
-            seed: task.seed || -1,
-          },
+          response_extension: "png",
+          width: task.width || 1024,
+          height: task.height || 1024,
+          num_inference_steps: task.num_inference_steps || 28,
+          negative_prompt: task.negative_prompt || "",
+          seed: task.seed || -1,
           prompt: task.prompt,
         });
 
