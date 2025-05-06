@@ -190,6 +190,11 @@ fastify.get("/queue/status", async (request, reply) => {
   });
 });
 
+fastify.post("/webhook", async (request, reply) => {
+  fastify.log.info({ webhookPayload: request.body }, "Received webhook data");
+  return reply.send({ status: "received" });
+});
+
 // Start the server
 fastify.listen({ host: host, port: port }, function (err, address) {
   if (err) {
