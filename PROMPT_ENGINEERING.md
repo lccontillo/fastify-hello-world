@@ -63,3 +63,12 @@ Response:
 ],
 "id": "text2img-315eefba-b3fa-44fc-a419-069ab80b9327"
 }
+
+### Test Webhook POST
+
+POST http://localhost:3000/webhook
+Content-Type: application/json
+
+{
+"exampleKey": "exampleValue"
+}

@@ -85,8 +85,12 @@ setInterval(async () => {
 
 // Middleware to check for API key
 fastify.addHook("preHandler", (request, reply, done) => {
-  // Skip API key check for status endpoints
-  if (request.url.startsWith("/tasks/") || request.url === "/queue/status") {
+  // Skip API key check for status endpoints and webhook
+  if (
+    request.url.startsWith("/tasks/") ||
+    request.url === "/queue/status" ||
+    request.url === "/webhook"
+  ) {
     return done();
   }
 
